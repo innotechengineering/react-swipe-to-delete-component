@@ -208,9 +208,13 @@ export default class SwipeToDelete extends React.Component {
     return this.model.calcSwipePercent({shift, width});
   }
 
+  unDelete() {
+    this.setState({isDeleted: false});
+  }
+
   onDelete() {
     this.setState({isDeleted: true}, () => {
-      this.props.onDelete(this.customProps);
+      this.props.onDelete({unDelete, ...this.customProps});
     });
   }
 
